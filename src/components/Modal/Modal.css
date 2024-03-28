@@ -56,3 +56,15 @@
     display: flex;
     justify-content: space-between;
 }
+
+.AddCardButton {
+    background-color: #56D35B;
+    border-radius: 10px;
+    width: 96px;
+    height: 42px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    float: right;
+    border: none; 
+}

@@ -32,6 +32,9 @@ function Modal() {
                     </div>
                     <Rating stars={ratingProduct} />
                     <h6>{descriptionProduct}</h6>
+                    <div>
+                        <button className='AddCardButton'>Add</button>
+                    </div>
                 </div>
             </div>
         </div>
