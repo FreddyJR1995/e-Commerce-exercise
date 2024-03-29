@@ -5,10 +5,12 @@
 .ResultContainer .CardResultsContainer {
     display: grid;
     grid-template-columns: auto auto auto auto;
-    gap: 5%;
+    gap: 3%;
     align-items: center;
     justify-content: center;
     height: 100%;
+    flex-wrap: wrap;
+    align-items: stretch;
 }
 
 .loader {
@@ -20,13 +22,14 @@
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
-    }
+}
 
-    @keyframes rotation {
+@keyframes rotation {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
-    } 
+}
