@@ -13,6 +13,7 @@ function SearchProvider({ children }) {
   const [descriptionProduct, setDescriptionProduct] = useState("");
   const [ratingProduct, setRatingProduct] = useState(1);
   const [order, setOrder] = useState("");
+  const [categories, setCategories] = useState([]);
 
   const getData = async () => {
     const response = await fetch("https://fakestoreapi.com/products");
@@ -33,21 +34,35 @@ function SearchProvider({ children }) {
     fetchData();
   }, []);
 
-  const searchedProducts = products.filter((product) => {
+  const searchedProducts = products.filter(product => {
     const productName = product.title.toLowerCase();
     const searchText = searchValue.toLowerCase();
     return productName.includes(searchText);
   }).sort((a, b) => {
-    if (order === "Name") {
-      return a.title.localeCompare(b.title);
+    switch (order) {
+      case "Name":
+        return a.title.localeCompare(b.title);
+      case "Price_Low":
+        return a.price - b.price;
+      case "Price_High":
+        return b.price - a.price;
+      default:
+        return 0;
     }
-    if (order === "Price_Low") {
-      return a.price - b.price;
-    }
-    if (order === "Price_High") {
-      return b.price - a.price;
-    }
+  }).filter(product => {
+    return categories.length === 0 || categories.includes(product.category);
   });
+
+
+  const filterByCategories = (id) => {
+    setCategories((prevCategories) => {
+      const categoryExists = prevCategories.includes(id);
+      return categoryExists
+        ? prevCategories.filter((category) => category !== id)
+        : [...prevCategories, id];
+    });
+  };
+  
 
   return (
     <SearchContext.Provider
@@ -70,6 +85,9 @@ function SearchProvider({ children }) {
         ratingProduct,
         order,
         setOrder,
+        categories,
+        setCategories,
+        filterByCategories
       }}
     >
       {children}
