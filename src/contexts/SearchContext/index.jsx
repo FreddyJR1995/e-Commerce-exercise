@@ -12,6 +12,7 @@ function SearchProvider({ children }) {
   const [priceProduct, setPriceProduct] = useState("");
   const [descriptionProduct, setDescriptionProduct] = useState("");
   const [ratingProduct, setRatingProduct] = useState(1);
+  const [selectedRate, setSelectedRate] = useState(1);
   const [order, setOrder] = useState("");
   const [categories, setCategories] = useState([]);
 
@@ -38,7 +39,13 @@ function SearchProvider({ children }) {
     const productName = product.title.toLowerCase();
     const searchText = searchValue.toLowerCase();
     return productName.includes(searchText);
-  }).sort((a, b) => {
+  }).filter(product => {
+    return categories.length === 0 ? true : categories.includes(product.category);
+  })
+  .filter(product => {
+    return categories.length === 0 ? product.rating.rate >= selectedRate : (categories.includes(product.category) && product.rating.rate >= selectedRate);
+  })
+  .sort((a, b) => {
     switch (order) {
       case "Name":
         return a.title.localeCompare(b.title);
@@ -49,8 +56,6 @@ function SearchProvider({ children }) {
       default:
         return 0;
     }
-  }).filter(product => {
-    return categories.length === 0 || categories.includes(product.category);
   });
 
 
@@ -87,7 +92,9 @@ function SearchProvider({ children }) {
         setOrder,
         categories,
         setCategories,
-        filterByCategories
+        filterByCategories,
+        selectedRate,
+        setSelectedRate,
       }}
     >
       {children}
