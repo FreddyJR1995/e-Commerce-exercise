@@ -3,10 +3,20 @@
   padding: 0;
 }
 
-.content-ResultandFilter{
+.content-ResultandFilter {
   display: grid;
   grid-template-areas: "filter results";
   grid-template-columns: 15% auto;
   column-gap: 70px;
   padding: 30px 35px;
+}
+.container {
+  display: flex;
+  width: 100%;
+}
+.store-container{
+  width: 100%;
+}
+.cartSection{
+  border-left: 1px solid #8B8B8B;
 }

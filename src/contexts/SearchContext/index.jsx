@@ -15,6 +15,7 @@ function SearchProvider({ children }) {
   const [selectedRate, setSelectedRate] = useState(1);
   const [order, setOrder] = useState("");
   const [categories, setCategories] = useState([]);
+  const [openCartSection, setOpenCartSection] =  useState(false);
 
   const getData = async () => {
     const response = await fetch("https://fakestoreapi.com/products");
@@ -95,6 +96,8 @@ function SearchProvider({ children }) {
         filterByCategories,
         selectedRate,
         setSelectedRate,
+        openCartSection,
+        setOpenCartSection
       }}
     >
       {children}
