@@ -4,13 +4,11 @@
 
 .ResultContainer .CardResultsContainer {
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 3%;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     align-items: center;
     justify-content: center;
     height: 100%;
-    flex-wrap: wrap;
-    align-items: stretch;
+    gap: 3%;
 }
 
 .loader {
