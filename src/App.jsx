@@ -1,4 +1,5 @@
 import './App.css';
+import Cart from './components/Cart';
 import { Filter } from './components/Filter';
 import { Navbar } from './components/Navbar';
 import { ResultInfoBar } from './components/ResultInfoBar';
@@ -28,7 +29,7 @@ function AppContent() {
             <ResultTable />
           </div>
         </div>
-        {openCartSection && <div className='cartSection'>products cart</div>}
+        {openCartSection && <div className='cartSection'><Cart/></div>}
       </div>
     </>
   );
