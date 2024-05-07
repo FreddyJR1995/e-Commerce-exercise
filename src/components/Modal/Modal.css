@@ -68,3 +68,8 @@
     float: right;
     border: none; 
 }
+.cardFooterContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

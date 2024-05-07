@@ -7,6 +7,7 @@ function SearchProvider({ children }) {
   const [searchValue, setSearchValue] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
+  const [productId, setProductId] = useState(0);
   const [imageProduct, setImageProduct] = useState("");
   const [titleProduct, setTitleProduct] = useState("");
   const [priceProduct, setPriceProduct] = useState("");
@@ -16,6 +17,10 @@ function SearchProvider({ children }) {
   const [order, setOrder] = useState("");
   const [categories, setCategories] = useState([]);
   const [openCartSection, setOpenCartSection] =  useState(false);
+  const [selectedProducts, setSelectedProducts] = useState([]);
+  const [total, setTotal] = useState("")
+  
+  console.log(selectedProducts)
 
   const getData = async () => {
     const response = await fetch("https://fakestoreapi.com/products");
@@ -68,6 +73,32 @@ function SearchProvider({ children }) {
         : [...prevCategories, id];
     });
   };
+
+  const addProducts = (productToAdd) => {
+    console.log('product to add', productToAdd)
+    const isProductExist = selectedProducts.find(product => product.id === productToAdd.id);
+    if (!isProductExist) {
+      setSelectedProducts([...selectedProducts, productToAdd]);
+      setIsOpen(false)
+      setOpenCartSection(true)
+    }
+  }
+
+  const removeProduct = (productId) => {
+    setSelectedProducts(selectedProducts.filter(product => product.id !== productId));
+  }
+
+  const updateProductTotal = (productId, count) => {
+    setSelectedProducts(prevProducts => {
+      return prevProducts.map(product => {
+        if (product.id === productId) {
+          const total = product.price * count;
+          return { ...product, count, total };
+        }
+        return product;
+      });
+    });
+  };
   
 
   return (
@@ -97,7 +128,13 @@ function SearchProvider({ children }) {
         selectedRate,
         setSelectedRate,
         openCartSection,
-        setOpenCartSection
+        setOpenCartSection,
+        addProducts,
+        selectedProducts,
+        productId,
+        setProductId,
+        removeProduct,
+        updateProductTotal
       }}
     >
       {children}
