@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext } from "react";
+import PropTypes from 'prop-types'; 
 
 const SearchContext = createContext();
 
@@ -137,5 +138,9 @@ function SearchProvider({ children }) {
     </SearchContext.Provider>
   );
 }
+
+SearchProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export { SearchContext, SearchProvider };

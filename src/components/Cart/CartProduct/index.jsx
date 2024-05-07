@@ -3,6 +3,7 @@ import './CartProduct.css'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { SearchContext } from '../../../contexts/SearchContext';
 import Counter from '../../Counter';
+import PropTypes from 'prop-types'; 
 
 function CartProduct({ product }) {
   const {
@@ -32,7 +33,7 @@ function CartProduct({ product }) {
         <img src={product.image} />
       </div>
       <div className='productTotalContainer'>
-      <p>${product.total}</p>
+      <p>${product.total.toFixed(2)}</p>
       </div>
       <div className='productCountContainer'>
       <Counter count={count} setCount={setCount} styles={{ color: '#8B8B8B'}} increaseProduct={increaseProduct} decreaseProduct={decreaseProduct}/>
@@ -41,5 +42,12 @@ function CartProduct({ product }) {
     </div>
   )
 }
-
+CartProduct.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    total: PropTypes.number.isRequired,
+    count: PropTypes.number.isRequired,
+  }).isRequired,
+};
 export default CartProduct

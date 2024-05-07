@@ -1,5 +1,6 @@
 import { Rating } from "../../../Filter/RatingFilter/Rating"
 import './Detail.css'
+import PropTypes from 'prop-types'; 
 
 function Detail ({title, price, rating }) {
     return (
@@ -11,4 +12,9 @@ function Detail ({title, price, rating }) {
     )
 }
 
+Detail.propTypes ={
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+};
 export { Detail }
