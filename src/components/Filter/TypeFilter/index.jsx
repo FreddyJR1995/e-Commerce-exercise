@@ -1,4 +1,5 @@
 import './TypeFilter.css'
+import PropTypes from 'prop-types'; 
 
 function TypeFilter ({name, options, onCategoryChange}) {
     const handleSetCategoryChange = (event) => {
@@ -19,5 +20,14 @@ function TypeFilter ({name, options, onCategoryChange}) {
         </div>
     )
 }
+
+TypeFilter.propTypes = {
+    name: PropTypes.string.isRequired,
+    options: PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired
+    })).isRequired,
+    onCategoryChange: PropTypes.func.isRequired
+};
 
 export { TypeFilter }

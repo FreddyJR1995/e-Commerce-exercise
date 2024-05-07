@@ -1,6 +1,8 @@
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
-import './Counter.css'
-function Counter({count, setCount, styles, increaseProduct, decreaseProduct}) {
+import './Counter.css';
+import PropTypes from 'prop-types';
+
+function Counter({count, styles, increaseProduct, decreaseProduct}) {
     return (
         <div className="counterContainer">
             <AiOutlineMinusCircle className="counterButton" style={count > 1 ? styles: {color:'#8B8B8B'}} onClick={count > 1 ? decreaseProduct : null} />
@@ -9,5 +11,12 @@ function Counter({count, setCount, styles, increaseProduct, decreaseProduct}) {
         </div>
     )
 }
+Counter.propTypes = {
+    count: PropTypes.number.isRequired,
+    setCount: PropTypes.func.isRequired,
+    styles: PropTypes.object,
+    increaseProduct: PropTypes.func.isRequired,
+    decreaseProduct: PropTypes.func.isRequired,
+};
 
 export default Counter

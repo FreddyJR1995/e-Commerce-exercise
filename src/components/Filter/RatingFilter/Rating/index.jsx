@@ -1,6 +1,7 @@
 import { AiFillStar } from 'react-icons/ai'
 import { AiOutlineStar } from 'react-icons/ai'
 import './Rating.css'
+import PropTypes from 'prop-types'; 
 
 function Rating ( {stars} ) {
     const fillStars = () => {
@@ -23,5 +24,8 @@ function Rating ( {stars} ) {
         </div>
     )
 }
+Rating.propTypes = {
+    stars: PropTypes.number.isRequired, 
+};
 
 export { Rating }
