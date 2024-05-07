@@ -9,7 +9,6 @@ function CartProduct({ product }) {
     removeProduct,
     updateProductTotal
   } = useContext(SearchContext);
-  console.log(product)
   const [count, setCount] = useState(product.count)
   const removeCartProduct = () => {
     removeProduct(product.id)

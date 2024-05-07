@@ -18,9 +18,6 @@ function SearchProvider({ children }) {
   const [categories, setCategories] = useState([]);
   const [openCartSection, setOpenCartSection] =  useState(false);
   const [selectedProducts, setSelectedProducts] = useState([]);
-  const [total, setTotal] = useState("")
-  
-  console.log(selectedProducts)
 
   const getData = async () => {
     const response = await fetch("https://fakestoreapi.com/products");
@@ -75,7 +72,6 @@ function SearchProvider({ children }) {
   };
 
   const addProducts = (productToAdd) => {
-    console.log('product to add', productToAdd)
     const isProductExist = selectedProducts.find(product => product.id === productToAdd.id);
     if (!isProductExist) {
       setSelectedProducts([...selectedProducts, productToAdd]);
