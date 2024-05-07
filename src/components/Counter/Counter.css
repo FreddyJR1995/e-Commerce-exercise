@@ -1,0 +1,12 @@
+.counterContainer {
+    display: flex;
+    align-items: center;
+}
+.counterText{
+    font-size: 24px;
+    margin: 10px;
+}
+.counterButton{
+    width: 30px;
+    height: 30px;
+}

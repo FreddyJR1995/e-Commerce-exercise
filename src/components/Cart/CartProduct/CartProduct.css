@@ -1,0 +1,28 @@
+.imageContainer {
+    display: flex;
+    justify-content: center;
+}
+.closeModal {
+    width: 24px;
+    height: 24px;
+    color: #FF3948;
+}
+.imageContainer img {
+    width: 50%;
+    aspect-ratio: 4/3;
+    object-fit: contain;
+    mix-blend-mode: color-burn;
+}
+.removeProductButton {
+    padding-top: 5px;
+    display: flex;
+    justify-content:end; 
+}
+.productTotalContainer {
+    display: flex;
+    justify-content: center;
+}
+.productCountContainer {
+    display: flex;
+    justify-content: center;
+}
